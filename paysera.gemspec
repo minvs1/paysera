@@ -6,8 +6,8 @@ require 'paysera/version'
 Gem::Specification.new do |spec|
   spec.name          = "paysera"
   spec.version       = Paysera::VERSION
-  spec.authors       = ["TODO: Write your name"]
-  spec.email         = ["Tomas Achmedovas"]
+  spec.authors       = ["Tomas Achmedovas"]
+  spec.email         = ["achmedovas.tomas@gmail.com"]
   spec.summary       = %q{TODO: Write a short summary. Required.}
   spec.description   = %q{TODO: Write a longer description. Optional.}
   spec.homepage      = ""
