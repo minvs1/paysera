@@ -44,8 +44,7 @@ class Paysera::Attributes
       },
       :payment          => {
           :maxlen   => 20,
-          :required => false,
-          :regex    => ''
+          :required => false
       },
       :country          => {
           :maxlen   => 2,
