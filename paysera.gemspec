@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Paysera::VERSION
   spec.authors       = ["Tomas Achmedovas"]
   spec.email         = ["achmedovas.tomas@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Paysera.com payment API}
+  spec.description   = %q{Paysera.com payment API}
   spec.homepage      = ""
   spec.license       = "MIT"
 
