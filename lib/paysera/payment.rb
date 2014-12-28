@@ -14,7 +14,7 @@ class Paysera::Payment
 
   private
 
-  def validate_data(attributes)
+  def self.validate_data(attributes)
     Paysera::Attributes::REQUEST.each do |k, v|
       raise("'%s' is required but missing.", k) if v[:required] and attributes[k].nil?
 
