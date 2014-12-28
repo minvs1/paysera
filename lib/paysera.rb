@@ -1,6 +1,6 @@
 require 'paysera/version'
 require 'paysera/attributes'
-require 'paysera/payment'
+require 'paysera/request'
 
 module Paysera
   API_VERSION = '1.6'
