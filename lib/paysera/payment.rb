@@ -1,5 +1,5 @@
 class Paysera::Payment
-  def build_request(paysera_params)
+  def self.build_request(paysera_params)
     # Ensure that all key will be symbols
     attributes                 = Hash[paysera_params.map { |k, v| [k.to_sym, v] }]
 
