@@ -2,16 +2,19 @@ require 'base64'
 require 'digest/md5'
 
 class Paysera::Request
-  def self.build_request(paysera_params)
+  def self.build_request(paysera_params, sign_password='')
     # Ensure that all key will be symbols
     request_params              = Hash[paysera_params.map { |k, v| [k.to_sym, v] }]
 
     # Set default values 
     request_params[:version]    = Paysera::API_VERSION
-    request_params[:project_id] = 123123123 # TODO get project_id from rails configuration file
+    request_params[:projectid] ||= Paysera.project_id
+    sign_password               ||= Paysera.sign_password
+
+    raise exception("'sign_password' is not found") if sign_password.nil?
 
     encoded_query  = encode_query(validate_and_make_query(request_params))
-    signed_request = sign_request(encoded_query, '34nig3uov30') # TODO get sign password from rails configuration file
+    signed_request = sign_request(encoded_query, sign_password) # TODO get sign password from rails configuration.rb file
 
     query = "data=#{encoded_query}&sign=#{signed_request}"
 
@@ -38,8 +41,8 @@ class Paysera::Request
       raise exception("'#{k}' is required but missing") if v[:required] and req[k].nil?
 
       req_value = req[k].to_s
-      regex = v[:regex].to_s
-      maxlen = v[:maxlen]
+      regex     = v[:regex].to_s
+      maxlen    = v[:maxlen]
 
       unless req[k].nil?
         raise exception("'#{k}' value '#{req[k]}' is too long, #{v[:maxlen]} characters allowed.") if maxlen and req_value.length > maxlen

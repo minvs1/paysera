@@ -1,6 +1,6 @@
 class Paysera::Attributes
   REQUEST = {
-      :project_id       => {
+      :projectid       => {
           :maxlen   => 11,
           :required => true,
           :regex    => /^\d+$/
