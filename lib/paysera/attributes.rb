@@ -91,7 +91,7 @@ class Paysera::Attributes
       :only_payments    => {
           :required => false,
       },
-      :disalow_payments => {
+      :disallow_payments => {
           :required => false,
       },
       :test             => {
