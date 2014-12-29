@@ -23,7 +23,7 @@ class Paysera::Request
                               })
 
 
-    "https://mokejimai.lt?#{query}"
+    "https://www.mokejimai.lt/pay/?#{query}"
   end
 
   private
