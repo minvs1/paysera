@@ -1,113 +1,113 @@
 class Paysera::Attributes
   REQUEST = {
-      :projectid       => {
+      :projectid         => {
           :maxlen   => 11,
           :required => true,
           :regex    => /^\d+$/
       },
-      :order_id         => {
+      :orderid          => {
           :maxlen   => 40,
           :required => true,
           :regex    => /^\d+$/
       },
-      :accept_url       => {
+      :accepturl        => {
           :maxlen   => 255,
           :required => true,
       },
-      :cancel_url       => {
+      :cancelurl        => {
           :maxlen   => 255,
           :required => true,
       },
-      :callback_url     => {
+      :callbackurl      => {
           :maxlen   => 255,
           :required => true,
       },
-      :version          => {
+      :version           => {
           :maxlen   => 9,
           :required => true,
           :regex    => /^\d+\.\d+$/
       },
-      :lang             => {
+      :lang              => {
           :maxlen   => 3,
           :required => false,
           :regex    => /^[a-z]{3}$/i
       },
-      :amount           => {
+      :amount            => {
           :maxlen   => 11,
           :required => false,
           :regex    => /^\d+$/
       },
-      :currency         => {
+      :currency          => {
           :maxlen   => 3,
           :required => false,
           :regex    => /^[a-z]{3}$/i
       },
-      :payment          => {
+      :payment           => {
           :maxlen   => 20,
           :required => false
       },
-      :country          => {
+      :country           => {
           :maxlen   => 2,
           :required => false,
           :regex    => /^[a-z]{2}$/i
       },
-      :paytext          => {
+      :paytext           => {
           :maxlen   => 255,
           :required => false,
       },
-      :p_firstname      => {
+      :p_firstname       => {
           :maxlen   => 255,
           :required => false,
       },
-      :p_lastname       => {
+      :p_lastname        => {
           :maxlen   => 255,
           :required => false,
       },
-      :p_email          => {
+      :p_email           => {
           :maxlen   => 255,
           :required => false,
       },
-      :p_street         => {
+      :p_street          => {
           :maxlen   => 255,
           :required => false,
       },
-      :p_city           => {
+      :p_city            => {
           :maxlen   => 255,
           :required => false,
       },
-      :p_state          => {
+      :p_state           => {
           :maxlen   => 20,
           :required => false,
       },
-      :p_zip            => {
+      :p_zip             => {
           :maxlen   => 20,
           :required => false,
       },
-      :p_countrycode    => {
+      :p_countrycode     => {
           :maxlen   => 2,
           :required => false,
           :regex    => /^[a-z]{2}$/i
       },
-      :only_payments    => {
+      :only_payments     => {
           :required => false,
       },
       :disallow_payments => {
           :required => false,
       },
-      :test             => {
+      :test              => {
           :maxlen   => 1,
           :required => false,
           :regex    => /^[01]$/
       },
-      :time_limit       => {
+      :time_limit        => {
           :maxlen   => 19,
           :required => false,
       },
-      :personcode       => {
+      :personcode        => {
           :maxlen   => 255,
           :required => false,
       },
-      :developerid      => {
+      :developerid       => {
           :maxlen   => 11,
           :required => false,
           :regex    => /^\d+$/
