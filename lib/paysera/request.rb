@@ -1,5 +1,6 @@
 require 'base64'
 require 'digest/md5'
+require 'cgi'
 
 class Paysera::Request
   def self.build_request(paysera_params, sign_password='')
@@ -10,8 +11,7 @@ class Paysera::Request
     request_params[:version]    = Paysera::API_VERSION
     request_params[:projectid] ||= Paysera.project_id
     sign_password               ||= Paysera.sign_password
-
-    raise exception("'sign_password' is not found") if sign_password.nil?
+    raise exception("'projectid' value #{Paysera.project_id} and 'sign_password' value #{Paysera.sign_password}")
 
     encoded_query  = encode_query(validate_and_make_query(request_params))
     signed_request = sign_request(encoded_query, sign_password) # TODO get sign password from rails configuration.rb file
@@ -49,7 +49,7 @@ class Paysera::Request
         raise exception("'#{k}' value '#{req[k]}' invalid.") if '' != regex and !req_value.match(regex)
 
         # Make query
-        request += "&#{k}=#{req[k]}"
+        request += "&#{CGI.escape(k)}=#{CGI.escape(req[k])}"
       end
     end
 
