@@ -4,16 +4,18 @@ require 'digest/md5'
 
 module Paysera
   class Request
-    def build_request(paysera_params, sign_password=nil)
+    def self.build_request(paysera_params, sign_password=nil)
       # Ensure that all key will be symbols
-      request_params             = Hash[paysera_params.map { |k, v| [k.to_sym, v] }]
+      paysera_params             = Hash[paysera_params.map { |k, v| [k.to_sym, v] }]
 
       # Set default values
-      request_params[:version]   = Paysera::API_VERSION
-      request_params[:projectid] ||= Paysera.project_id
+      paysera_params[:version]   = Paysera::API_VERSION
+      paysera_params[:projectid] ||= Paysera.project_id
       sign_password              ||= Paysera.sign_password
 
-      valid_request  = validate_request(request_params)
+      raise send_error("'sign_password' is required but missing") if sign_password.nil?
+
+      valid_request = validate_request(paysera_params)
       encoded_query  = encode_string make_query(valid_request)
       signed_request = sign_request(encoded_query, sign_password)
 
@@ -28,24 +30,24 @@ module Paysera
 
     private
 
-    def make_query(data)
+    def self.make_query(data)
       data.collect do |key, value|
         "#{CGI.escape(key.to_s)}=#{CGI.escape(value.to_s)}"
       end.compact.sort! * '&'
     end
 
-    def sign_request(query, password)
+    def self.sign_request(query, password)
       # Encode string + password with md5
       Digest::MD5.hexdigest(query + password)
     end
 
-    def encode_string(string)
+    def self.encode_string(string)
       # 1) Encode with base64
       # 2) Replace / with _ and + with -
       Base64.encode64(string).gsub("\n", '').gsub('/', '_').gsub('+', '-')
     end
 
-    def validate_request(req)
+    def self.validate_request(req)
       request = {}
 
       Paysera::Attributes::REQUEST.each do |k, v|
@@ -67,7 +69,7 @@ module Paysera
       request
     end
 
-    def send_error(msg)
+    def self.send_error(msg)
       Paysera::Error::Request.new msg
     end
   end
