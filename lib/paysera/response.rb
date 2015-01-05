@@ -28,11 +28,13 @@ module Paysera
     end
 
     def sms?
-      # TODO check data with sms params
+      # Basically if response data have sms param then it is sms payment
+      @data.key? :sms
     end
 
     def bank?
-      # TODO check data with bank params
+      # Same here, if response have paytext param, then it is bank payment
+      @data.key? :paytext
     end
 
     def get_data

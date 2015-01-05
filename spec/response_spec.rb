@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Paysera::Response do
 
+  # TODO: add sms response
   let(:response_data) do
     {
         :data => 'b3JkZXJpZD0xMjM0JnByb2plY3RpZD01NjU3MSZ0ZXN0PTEmdmVyc2lvbj0xLjYmdHlwZT1URVNUJmxhbmc9JnBheW1lbnQ9aGFuemEmY3VycmVuY3k9TFRMJmFtb3VudD0xMDAwMDAmcGF5dGV4dD1PcmRlcitObyUzQSsxMjM0K2F0K2h0dHAlM0ElMkYlMkZwYXlzZXJhLndwci5sdCtwcm9qZWN0LislMjhTZWxsZXIlM0ErVG9tYXMrQWNobWVkb3ZhcyUyOSZwX2VtYWlsPXRyeWtpejExJTQwZ21haWwuY29tJmNvdW50cnk9TFQmbV9wYXlfcmVzdG9yZWQ9MHg0Jl9jbGllbnRfbGFuZ3VhZ2U9ZW5nJnJlY2VpdmVyaWQ9MTg2NTA2JnN0YXR1cz0xJnBheWFtb3VudD0xMDAwMDAmcGF5Y3VycmVuY3k9TFRMJnJlcXVlc3RpZD02OTk0MzY5NyZuYW1lPSZzdXJlbmFtZT0%3D',
@@ -9,7 +10,6 @@ describe Paysera::Response do
         :ss2  => '02pTV2VtdxJlMIdrKakCHpIxgiG--1iUwZkxikwAvqPEiiEj_ekmMYsnYDu3B8RlrmDBWrsSIRLIaPwOGLbInQc9vduK3lsjm9PQ9RImNXEHcc5Pyk-6cQ93U833bQ73r5NxvwfxE8s3KhBUxwHDLTSPCMnF7yEhskLx63I0SW8%3D'
     }
   end
-
   let(:project_id) { 56571 }
   let(:sign_password) { '36947d6dcbccc03ad591deab138dbb0c' }
 

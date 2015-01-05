@@ -1,5 +1,44 @@
 class Paysera::Attributes
-  REQUEST = {
+    SMS = {
+        :to        => {},
+        :sms       => {},
+        :from      => {},
+        :operator  => {},
+        :amount    => {
+            :maxlen   => 11,
+            :required => false,
+            :regex    => /^\d+$/
+        },
+        :currency  => {
+            :maxlen   => 3,
+            :required => false,
+            :regex    => /^[a-z]{3}$/i
+        },
+        :country   => {
+            :maxlen   => 2,
+            :required => false,
+            :regex    => /^[a-z]{2}$/i
+        },
+        :id        => {},
+        :test      => {
+            :maxlen   => 1,
+            :required => false,
+            :regex    => /^[01]$/
+        },
+        :key       => {},
+        :projectid => {
+            :maxlen   => 11,
+            :required => true,
+            :regex    => /^\d+$/
+        },
+        :version   => {
+            :maxlen   => 9,
+            :required => true,
+            :regex    => /^\d+\.\d+$/
+        }
+    }
+
+    REQUEST = {
       :projectid         => {
           :maxlen   => 11,
           :required => true,
