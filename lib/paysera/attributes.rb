@@ -5,20 +5,20 @@ class Paysera::Attributes
           :required => true,
           :regex    => /^\d+$/
       },
-      :orderid          => {
+      :orderid     => {
           :maxlen   => 40,
           :required => true,
           :regex    => /^\d+$/
       },
-      :accepturl        => {
+      :accepturl   => {
           :maxlen   => 255,
           :required => true,
       },
-      :cancelurl        => {
+      :cancelurl   => {
           :maxlen   => 255,
           :required => true,
       },
-      :callbackurl      => {
+      :callbackurl => {
           :maxlen   => 255,
           :required => true,
       },
