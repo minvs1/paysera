@@ -1,5 +1,6 @@
 require 'paysera/version'
 require 'paysera/attributes'
+require 'paysera/error'
 require 'paysera/request'
 require 'paysera/response'
 
