@@ -47,13 +47,15 @@ request_params_example = {
 Paysera::Request.build_request(request_params_example, [sign_password])
 ```
 
-It will generate payment link to paysera(`https://mokejimai.lt/pay/?data=...&sign=...`). So you can:
+It will generate payment link to paysera - `https://mokejimai.lt/pay/?data=...&sign=...`.
+So you can do this if you are using *Rails*:
+
 
 ```ruby
 redirect_to Paysera::Request.build_request(...)
 ```
 
-You can specify all parameters from: https://developers.paysera.com/en/payments/current#request-parameters
+You can use all parameters from: https://developers.paysera.com/en/payments/current#request-parameters
 
 If required parameter not found or it is invalid it will raise `Paysera::Error::Request` error with specific error message.
 
@@ -66,20 +68,30 @@ If you specify `projectid` or `sign_password`  it will overwrite initializer.
 response = Paysera::Response.new(params, [project_id], [sign_password])
 ```
 
+If `ss1` or `ss2` will fail to validate it will raise `Paysera::Error::Response` error with specific error message.
+
 To check if response is sms/mikro
+
 ```ruby
-response.sms?
+if response.sms?
+  ...
+end
 ```
 
 To check if response is bank/makro:
+
 ```ruby
-response.bank?
+if response.bank?
+  ...
+end
 ```
 
 To get response data:
+
 ```ruby
 response.get_data
 ```
+
 It will return Hash of data: [SMS specification](https://developers.paysera.com/en/sms-keywords/current#detailed-specification) and [Bank specification(see "Encoded parameters")](https://developers.paysera.com/en/payments/1.6#integration-via-specification)
 
 
