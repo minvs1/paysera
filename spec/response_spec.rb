@@ -10,15 +10,15 @@ describe Paysera::Response do
         :ss2  => '02pTV2VtdxJlMIdrKakCHpIxgiG--1iUwZkxikwAvqPEiiEj_ekmMYsnYDu3B8RlrmDBWrsSIRLIaPwOGLbInQc9vduK3lsjm9PQ9RImNXEHcc5Pyk-6cQ93U833bQ73r5NxvwfxE8s3KhBUxwHDLTSPCMnF7yEhskLx63I0SW8%3D'
     }
   end
-  let(:project_id) { 56571 }
+  let(:projectid) { 56571 }
   let(:sign_password) { '36947d6dcbccc03ad591deab138dbb0c' }
 
-  subject(:bank_response) { Paysera::Response.new response_data, project_id: project_id, sign_password: sign_password }
-  subject(:sms_response) { Paysera::Response.new response_data, project_id: project_id, sign_password: sign_password }
+  subject(:bank_response) { Paysera::Response.new response_data, projectid: projectid, sign_password: sign_password }
+  subject(:sms_response) { Paysera::Response.new response_data, projectid: projectid, sign_password: sign_password }
 
   describe '#initialize' do
     def new_response(data: nil, ss1: nil, ss2: nil, p_id: nil, sign: nil)
-      Paysera::Response.new({ data: data, ss1: ss1, ss2: ss2 }, project_id: p_id, sign_password: sign)
+      Paysera::Response.new({ data: data, ss1: ss1, ss2: ss2 }, projectid: p_id, sign_password: sign)
     end
 
     context 'when no data param' do
@@ -45,7 +45,7 @@ describe Paysera::Response do
       it { expect { new_response(data: response_data[:data],
                                  ss1:  't',
                                  ss2:  response_data[:ss2],
-                                 p_id: project_id,
+                                 p_id: projectid,
                                  sign: sign_password) }.to raise_exception /verify.+ss1/i }
     end
 
@@ -53,7 +53,7 @@ describe Paysera::Response do
       it { expect { new_response(data: response_data[:data],
                                  ss1:  response_data[:ss1],
                                  ss2:  't',
-                                 p_id: project_id,
+                                 p_id: projectid,
                                  sign: sign_password) }.to raise_exception /verify.+ss2/i }
     end
 

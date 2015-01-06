@@ -10,7 +10,7 @@ module Paysera
 
       # Set default values
       paysera_params[:version]   = Paysera::API_VERSION
-      paysera_params[:projectid] ||= Paysera.project_id
+      paysera_params[:projectid] ||= Paysera.projectid
       sign_password              ||= Paysera.sign_password
 
       raise send_error("'sign_password' is required but missing") if sign_password.nil?

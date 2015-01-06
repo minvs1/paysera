@@ -8,13 +8,13 @@ module Paysera
   class Response
     PAYSERA_PUBLIC_KEY = 'https://www.webtopay.com/download/public.key'
 
-    def initialize(query, project_id: nil, sign_password: nil)
+    def initialize(query, projectid: nil, sign_password: nil)
       raise send_error("'data' parameter was not found") if query[:data].nil?
       raise send_error("'ss1' parameter was not found") if query[:ss1].nil?
       raise send_error("'ss2' parameter was not found") if query[:ss2].nil?
 
-      project_id ||= Paysera.project_id
-      raise send_error("'projectid' parameter was not found") if project_id.nil?
+      projectid ||= Paysera.projectid
+      raise send_error("'projectid' parameter was not found") if projectid.nil?
 
       sign_password ||= Paysera.sign_password
       raise send_error("'sign_password' parameter was not found") if sign_password.nil?
@@ -24,7 +24,7 @@ module Paysera
 
       @data = convert_to_hash safely_decode_string(query[:data])
 
-      raise send_error("'projectid' mismatch") if @data[:projectid].to_i != project_id
+      raise send_error("'projectid' mismatch") if @data[:projectid].to_i != projectid
     end
 
     def sms?

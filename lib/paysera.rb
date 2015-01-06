@@ -8,7 +8,7 @@ module Paysera
   API_VERSION = '1.6'
 
   class << self
-    attr_accessor :project_id, :sign_password
+    attr_accessor :projectid, :sign_password
 
     def config
       yield self
