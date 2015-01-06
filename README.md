@@ -107,4 +107,4 @@ If you specify `project_id` or `sign_password` it will overwrite initializer.
 
 ## License
 
-MIT License: see `[LICENSE](https://github.com/TomasAchmedovas/paysera/blob/master/LICENSE)` file
+MIT License: see [LICENSE](https://github.com/TomasAchmedovas/paysera/blob/master/LICENSE) file
