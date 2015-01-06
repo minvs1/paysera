@@ -36,7 +36,7 @@ end
 If you are using *Ruby on Rails* add it to `config/initializers/paysera.rb`. However it do not necessarily has to be rails,
 you can add this into any Ruby app.
 
-### Request
+#### Request
 
 To make a request you only need to execute this:
 
@@ -65,7 +65,7 @@ If required parameter not found or it is invalid it will raise `Paysera::Error::
 
 If you specify `projectid` or `sign_password`  it will overwrite initializer.
 
-### Response
+#### Response
 
 ```ruby
 # params should include valid data, ss1 and ss2
