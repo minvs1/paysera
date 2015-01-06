@@ -29,7 +29,7 @@ Paysera.config do |config|
 end
 ```
 
-If you are using Ruby on Rails add it to `config/initializers/paysera.rb`. However it do not necessarily has to be rails,
+If you are using *Ruby on Rails* add it to `config/initializers/paysera.rb`. However it do not necessarily has to be rails,
 you can add this into any Ruby app.
 
 ### Request
