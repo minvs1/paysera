@@ -24,7 +24,7 @@ You can set default config like so:
 
 ```ruby
 Paysera.config do |config|
-  config.project_id = 56571
+  config.projectid = 56571
   config.sign_password = '36947d6dcbccc03ad591deab138dbb0c'
 end
 ```
@@ -65,7 +65,7 @@ If you specify `projectid` or `sign_password`  it will overwrite initializer.
 
 ```ruby
 # params should include valid data, ss1 and ss2
-response = Paysera::Response.new(params, [project_id], [sign_password])
+response = Paysera::Response.new(params, [projectid], [sign_password])
 ```
 
 If `ss1` or `ss2` will fail to validate it will raise `Paysera::Error::Response` error with specific error message.
@@ -95,7 +95,7 @@ response.get_data
 It will return Hash of data: [SMS specification](https://developers.paysera.com/en/sms-keywords/current#detailed-specification) and [Bank specification(see "Encoded parameters")](https://developers.paysera.com/en/payments/1.6#integration-via-specification)
 
 
-If you specify `project_id` or `sign_password` it will overwrite initializer.
+If you specify `projectid` or `sign_password` it will overwrite initializer.
 
 ## Contributing
 
