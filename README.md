@@ -1,6 +1,10 @@
 # Paysera
 
-TODO: Write a gem description
+*"Paysera is an advanced, effective, proven and safe electronic money system with an unlimited electronic money licence No. 1 issued by the Bank of Lithuania. It offers a free settlement account which allows for a quick, safe and low-cost (often – free of charge) payment for goods and services.
+ Paysera account is a true electronic wallet, which can not be lost; you will always find the amount of money that you have deposited in your account. In most cases, this type of account is better than bank account, because it is subject to higher security requirements, administrators of Paysera system can not lend or invest money held on the owner’s account.
+ Paysera.com services are constantly expanded and improved by the top-level specialists in accordance with the latest payment innovations."* — [Paysera](https://www.paysera.com/index.html)
+
+This gem provides easy access to Paysera payment API.
 
 ## Installation
 
