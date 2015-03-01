@@ -90,10 +90,12 @@ if response.bank?
 end
 ```
 
-To get response data:
+To get response data (keys are symbols):
 
 ```ruby
 response.get_data
+
+puts response.get_data[:sms] # => keyword1 text
 ```
 
 It will return Hash of data: [SMS specification](https://developers.paysera.com/en/sms-keywords/current#detailed-specification) and [Bank specification(see "Encoded parameters")](https://developers.paysera.com/en/payments/1.6#integration-via-specification)
