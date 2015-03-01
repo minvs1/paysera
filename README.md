@@ -101,6 +101,11 @@ It will return Hash of data: [SMS specification](https://developers.paysera.com/
 
 If you specify `projectid` or `sign_password` it will overwrite initializer.
 
+Also you propably want to skip CSRF verify in callback action, here's how:
+```ruby
+skip_before_filter :verify_authenticity_token, :only => [:receive_callback] # :receive_callback - your callback action
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/TomasAchmedovas/paysera/fork )
