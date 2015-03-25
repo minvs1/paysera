@@ -63,6 +63,16 @@ describe Paysera::Response do
                                  ss2:  response_data[:ss2],
                                  p_id: 1,
                                  sign: sign_password) }.to raise_exception /projectid.+mismatch/i }
+      it { expect { new_response(data: response_data[:data],
+                                 ss1:  response_data[:ss1],
+                                 ss2:  response_data[:ss2],
+                                 p_id: 56571,
+                                 sign: sign_password) }.not_to raise_error }
+      it { expect { new_response(data: response_data[:data],
+                                 ss1:  response_data[:ss1],
+                                 ss2:  response_data[:ss2],
+                                 p_id: "56571",
+                                 sign: sign_password) }.not_to raise_error }
     end
   end
 
