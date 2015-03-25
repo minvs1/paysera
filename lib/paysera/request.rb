@@ -25,7 +25,7 @@ module Paysera
                          })
 
 
-      "https://www.mokejimai.lt/pay/?#{query}"
+      "https://www.paysera.lt/pay/?#{query}"
     end
 
     private
