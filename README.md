@@ -4,7 +4,7 @@
  Paysera account is a true electronic wallet, which can not be lost; you will always find the amount of money that you have deposited in your account. In most cases, this type of account is better than bank account, because it is subject to higher security requirements, administrators of Paysera system can not lend or invest money held on the owner’s account.
  Paysera.com services are constantly expanded and improved by the top-level specialists in accordance with the latest payment innovations."* — [Paysera](https://www.paysera.com/index.html)
 
-This gem provides easy access to Paysera payment API.
+This gem provides easy access to the Paysera payment API.
 
 ## Installation
 
@@ -24,7 +24,7 @@ Or install it yourself as:
 
 ## Usage
 
-You can set default config like so:
+You can set default configuration like this:
 
 ```ruby
 Paysera.config do |config|
@@ -33,12 +33,11 @@ Paysera.config do |config|
 end
 ```
 
-If you are using *Ruby on Rails* add it to `config/initializers/paysera.rb`. However it do not necessarily has to be rails,
-you can add this into any Ruby app.
+If you are using *Ruby on Rails* add it to `config/initializers/paysera.rb`. However the gem usage is not restricted to Ruby on Rails, you can use it in any Ruby application.
 
 #### Request
 
-To make a request you only need to execute this:
+To make a request execute this:
 
 ```ruby
 # Minimum requirements for request_params
@@ -51,7 +50,7 @@ request_params_example = {
 Paysera::Request.build_request(request_params_example, [sign_password])
 ```
 
-It will generate payment link to paysera - `https://mokejimai.lt/pay/?data=...&sign=...`.
+It will generate payment link to paysera - `https://paysera.lt/pay/?data=...&sign=...`.
 So you can do this if you are using *Rails*:
 
 
@@ -59,11 +58,11 @@ So you can do this if you are using *Rails*:
 redirect_to Paysera::Request.build_request(...)
 ```
 
-You can use all parameters from: https://developers.paysera.com/en/payments/current#request-parameters
+You can use any parameters from: https://developers.paysera.com/en/payments/current#request-parameters
 
-If required parameter not found or it is invalid it will raise `Paysera::Error::Request` error with specific error message.
+If required parameters are not present or are invalid the gem will raise a `Paysera::Error::Request` error with a specific error message.
 
-If you specify `projectid` or `sign_password`  it will overwrite initializer.
+If you specify `projectid` or `sign_password`  it will overwrite the values set in the initializer.
 
 #### Response
 
@@ -72,9 +71,9 @@ If you specify `projectid` or `sign_password`  it will overwrite initializer.
 response = Paysera::Response.new(params, [projectid], [sign_password])
 ```
 
-If `ss1` or `ss2` will fail to validate it will raise `Paysera::Error::Response` error with specific error message.
+If `ss1` or `ss2` fails to validate a `Paysera::Error::Response` exception will be raised with a specific error message.
 
-To check if response is sms/mikro
+To check if it's a sms/mikro response:
 
 ```ruby
 if response.sms?
@@ -82,7 +81,7 @@ if response.sms?
 end
 ```
 
-To check if response is bank/makro:
+To check if it's a bank/makro response:
 
 ```ruby
 if response.bank?
@@ -90,7 +89,7 @@ if response.bank?
 end
 ```
 
-To get response data (keys are symbols):
+To access the response data (keys are symbols):
 
 ```ruby
 response.get_data
@@ -98,12 +97,12 @@ response.get_data
 puts response.get_data[:sms] # => keyword1 text
 ```
 
-It will return Hash of data: [SMS specification](https://developers.paysera.com/en/sms-keywords/current#detailed-specification) and [Bank specification(see "Encoded parameters")](https://developers.paysera.com/en/payments/1.6#integration-via-specification)
+It will return a Hash with data: [SMS specification](https://developers.paysera.com/en/sms-keywords/current#detailed-specification) and [Bank specification(see "Encoded parameters")](https://developers.paysera.com/en/payments/1.6#integration-via-specification)
 
 
-If you specify `projectid` or `sign_password` it will overwrite initializer.
+If you specify `projectid` or `sign_password` it will overwrite the values set in the initializer.
 
-Also you propably want to skip CSRF verify in callback action, here's how:
+Also you propably want to skip CSRF verification for your callback action:
 ```ruby
 skip_before_filter :verify_authenticity_token, :only => [:receive_callback] # :receive_callback - your callback action
 ```
