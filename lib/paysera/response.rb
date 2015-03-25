@@ -24,7 +24,7 @@ module Paysera
 
       @data = convert_to_hash safely_decode_string(query[:data])
 
-      raise send_error("'projectid' mismatch") if @data[:projectid].to_i != projectid
+      raise send_error("'projectid' mismatch") if @data[:projectid].to_i != projectid.to_i
     end
 
     def sms?
