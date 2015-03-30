@@ -56,7 +56,7 @@ module Paysera
 
     def valid_ss2?(data, ss2)
       public_key = get_public_key
-      ss2        = unescape_string safely_decode_string(unescape_string(ss2))
+      ss2        = safely_decode_string(unescape_string(ss2))
       data       = unescape_string data
 
       public_key.verify(OpenSSL::Digest::SHA1.new, ss2, data)
