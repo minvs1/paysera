@@ -10,6 +10,13 @@ describe Paysera::Response do
         :ss2  => '02pTV2VtdxJlMIdrKakCHpIxgiG--1iUwZkxikwAvqPEiiEj_ekmMYsnYDu3B8RlrmDBWrsSIRLIaPwOGLbInQc9vduK3lsjm9PQ9RImNXEHcc5Pyk-6cQ93U833bQ73r5NxvwfxE8s3KhBUxwHDLTSPCMnF7yEhskLx63I0SW8%3D'
     }
   end
+  let(:another_response_data) do
+    {
+        :data => 'YW1vdW50PTIwMCZjb3VudHJ5PUxUJmN1cnJlbmN5PUVVUiZsYW5nPWxpdCZvcmRlcmlkPTMwMTAyMDAwMTQyNzc1Mjk0NCZwX2NvdW50cnljb2RlPUxUJnBheXRleHQ9QXBtb2slQzQlOTdqaW1hcyt1JUM1JUJFKzEra3JlZC4rJTI4aHR0cCUzQSUyRiUyRmxvY2FsaG9zdCt1JUM1JUJFc2FreW1hcyszMDEwMjAwMDE0Mjc3NTI5NDQlMjkmcHJvamVjdGlkPTU2NTcxJnRlc3Q9MSZ2ZXJzaW9uPTEuNiZwYXltZW50PWhhbnphJnBfZW1haWw9c29ycnklMkJqdXN0JTJCdGVzdGluZyUyQnBheXNlcmElMkJnZW0lNDBnbWFpbC5jb20mc3RhdHVzPTEmcmVxdWVzdGlkPTc1MzcxMDU0JnBheWFtb3VudD0yMDAmcGF5Y3VycmVuY3k9RVVS',
+        :ss1  => '3a3ce55cfdf7e950a766cd6df6693f95',
+        :ss2  => '3TKdk3iLGkMEvBW-NNl5i5y0wHEaXMZt2cLwBnxsPO8Jsf_PVfHsoN-eWYMFQFrpHXgZTqGwhCEhw3goAXIyFH8EW-jzNmMOoBVPjpMif7ZYRgerd1nI_pVz9_RAEXDd7WSvuhJz5se2F0UMgUikfVALdBEQ3UcrfYqKecUsmbU='
+    }
+  end
   let(:projectid) { 56571 }
   let(:sign_password) { '36947d6dcbccc03ad591deab138dbb0c' }
 
@@ -55,6 +62,20 @@ describe Paysera::Response do
                                  ss2:  't',
                                  p_id: projectid,
                                  sign: sign_password) }.to raise_exception /verify.+ss2/i }
+    end
+
+    context 'when valid ss2' do
+      it { expect { new_response(data: another_response_data[:data],
+                                 ss1:  another_response_data[:ss1],
+                                 ss2:  another_response_data[:ss2],
+                                 p_id: projectid,
+                                 sign: sign_password) }.not_to raise_error }
+
+      it { expect { new_response(data: response_data[:data],
+                                 ss1:  response_data[:ss1],
+                                 ss2:  response_data[:ss2],
+                                 p_id: projectid,
+                                 sign: sign_password) }.not_to raise_error }
     end
 
     context 'when projectid mismatch' do
