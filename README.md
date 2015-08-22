@@ -47,8 +47,9 @@ request_params_example = {
   cancelurl: 'http://0.0.0.0:3000?cancel',
   callbackurl: 'http://0.0.0.0:3000?callback'
 }
-Paysera::Request.build_request(request_params_example, [sign_password])
+Paysera::Request.build_request(request_params_example, sign_password: 'my_sign_password')
 ```
+*sign_password* is optional.
 
 It will generate payment link to paysera - `https://paysera.lt/pay/?data=...&sign=...`.
 So you can do this if you are using *Rails*:
@@ -68,8 +69,9 @@ If you specify `projectid` or `sign_password`  it will overwrite the values set 
 
 ```ruby
 # params should include valid data, ss1 and ss2
-response = Paysera::Response.new(params, [projectid], [sign_password])
+response = Paysera::Response.new(params, projectid: 123, sign_password: 'my_sign_password')
 ```
+*projectid* and *sign_password* are optional.
 
 If `ss1` or `ss2` fails to validate a `Paysera::Error::Response` exception will be raised with a specific error message.
 
