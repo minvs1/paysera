@@ -63,7 +63,7 @@ module Paysera
     end
 
     def get_public_key
-      OpenSSL::X509::Certificate.new(open(PAYSERA_PUBLIC_KEY).read).public_key
+      OpenSSL::X509::Certificate.new(URI.open(PAYSERA_PUBLIC_KEY).read).public_key
     end
 
     def safely_decode_string(string)
