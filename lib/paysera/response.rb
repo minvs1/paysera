@@ -6,7 +6,7 @@ require 'base64'
 
 module Paysera
   class Response
-    PAYSERA_PUBLIC_KEY = 'http://www.paysera.com/download/public.key'
+    PAYSERA_PUBLIC_KEY = 'https://www.paysera.com/download/public.key'
 
     def initialize(query, projectid: nil, sign_password: nil)
       raise send_error("'data' parameter was not found") if query[:data].nil?
@@ -63,7 +63,7 @@ module Paysera
     end
 
     def get_public_key
-      OpenSSL::X509::Certificate.new(open(PAYSERA_PUBLIC_KEY).read).public_key
+      OpenSSL::X509::Certificate.new(URI.open(PAYSERA_PUBLIC_KEY).read).public_key
     end
 
     def safely_decode_string(string)
